@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ホーム</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            margin: 0;
+            height: 100vh;
+            user-select: none;
+            overflow: hidden;
+        }
+
+        .font-display {
+            font-family: 'Fredoka One', cursive;
+        }
+
+        /* タイトルの縁取りエフェクト */
+        .title-stroke {
+            -webkit-text-stroke: 2px #5d4037;
+            text-shadow: 0px 4px 0px #3e2723, 0px 8px 10px rgba(0,0,0,0.5);
+        }
+
+        /* 虫のフワフワアニメーション */
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* 森の背景の光のボケ */
+        .bokeh {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 70%);
+            mix-blend-mode: overlay;
+        }
+
+        /* UIパネルのガラス風エフェクト */
+        .glass-panel {
+            background: rgba(17, 34, 17, 0.7);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(167, 243, 208, 0.3);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            green: '#2e7d32',
+                            light: '#81c784',
+                            dark: '#1b5e20',
+                            ui: '#15331d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <!-- ================= HOME SCREEN ================= -->
+    <div class="relative h-full flex flex-col">
+        <!-- 背景レイヤー -->
+        <div class="absolute inset-0 bg-gradient-to-b from-green-300 via-green-600 to-green-900 z-0">
+            <!-- 木の幹っぽいシルエット -->
+            <div class="absolute left-[10%] top-0 w-8 h-full bg-green-900 opacity-40"></div>
+            <div class="absolute right-[20%] top-0 w-12 h-full bg-green-900 opacity-50"></div>
+            <!-- 光のボケ -->
+            <div class="bokeh w-32 h-32 top-10 left-10"></div>
+            <div class="bokeh w-48 h-48 top-40 right-[-20px]"></div>
+            <div class="bokeh w-24 h-24 bottom-1/3 left-1/4"></div>
+        </div>
+
+        <!-- メインコンテンツレイヤー -->
+        <div class="relative z-10 flex-1 flex flex-col pt-10 pb-4 px-4">
+
+            <!-- トップヘッダー (設定アイコンなど) -->
+            <div class="flex justify-end pt-2">
+                <button class="text-white text-2xl drop-shadow-md hover:scale-110 transition" onclick="showToast('設定画面は準備中です')">⚙️</button>
+            </div>
+
+            <!-- タイトルロゴ -->
+            <div class="text-center mt-2">
+                <h1 class="font-display text-4xl leading-none text-[#ffb300] title-stroke tracking-wide">
+                    INSECT<br><span class="text-white">ADVENTURE</span>
+                </h1>
+            </div>
+
+            <!-- 中央エリア (虫と右サイドメニュー) -->
+            <div class="flex flex-1 mt-4">
+
+                <!-- 左側: メイン昆虫表示 -->
+                <div class="flex-1 flex flex-col items-center justify-end pb-2 relative">
+                    <!-- 虫の画像 (絵文字で代用し、大きく表示) -->
+                    <div class="text-[120px] filter drop-shadow-2xl animate-float cursor-pointer" onclick="pokeBug()">🪲</div>
+
+                    <!-- 虫のステータスパネル -->
+                    <div class="glass-panel w-full rounded-xl p-3 text-white relative bottom-0 z-20">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="text-[10px] text-blue-300 font-bold bg-blue-900/50 px-1 rounded border border-blue-500">♂ オス</span>
+                        </div>
+                        <div class="font-black text-sm tracking-wider">ミヤマクワガタ</div>
+                        <div class="flex items-center justify-between text-xs font-bold mt-1">
+                            <span>LV. 18</span>
+                            <div class="flex items-center gap-1">
+                                <span>HP</span>
+                                <div class="w-16 h-2 bg-gray-700 rounded-full overflow-hidden border border-gray-600">
+                                    <div class="h-full bg-green-500 w-[93%]"></div>
+                                </div>
+                                <span class="text-green-400">93%</span>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-x-2 gap-y-1 mt-2 text-[11px] font-bold border-t border-white/20 pt-2">
+                            <div>⚔️ 攻撃 <span class="float-right text-yellow-300">120</span></div>
+                            <div>🛡️ 防御 <span class="float-right text-blue-300">140</span></div>
+                            <div class="col-span-2 text-gray-300">タイプ: むし/き</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 右側: 各種メニューパネル -->
+                <div class="w-[150px] flex flex-col gap-2 ml-3 justify-end pb-2 z-20">
+
+                    <!-- プレイヤー情報 -->
+                    <div class="bg-brand-ui border-2 border-brand-light rounded-xl p-2 text-white shadow-lg cursor-pointer hover:brightness-110 transition" onclick="showToast('プロフィール画面')">
+                        <div class="flex items-center gap-2">
+                            <div class="w-8 h-8 bg-blue-400 rounded-full flex items-center justify-center text-lg border-2 border-white overflow-hidden">
+                                👦🏻
+                            </div>
+                            <div class="flex-1">
+                                <div class="font-black text-xs">ケンジ</div>
+                                <div class="text-[10px] text-gray-300 font-bold flex items-center justify-between">
+                                    LV. 24
+                                    <!-- EXPバー -->
+                                    <div class="w-12 h-1 bg-gray-700 ml-1 rounded-full"><div class="h-full bg-blue-400 w-3/4 rounded-full"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between mt-2 text-[11px] font-bold bg-black/30 p-1 rounded">
+                            <span class="text-yellow-400">🪙 12,450</span>
+                            <span class="text-cyan-400">💎 180</span>
+                        </div>
+                    </div>
+
+                    <!-- DAILY MISSIONS -->
+                    <div class="bg-brand-ui/90 border border-brand-light/50 rounded-xl p-2 text-white text-xs cursor-pointer hover:bg-brand-dark transition shadow-lg relative overflow-hidden" onclick="showToast('デイリーミッションを確認！')">
+                        <div class="font-black text-[11px]">デイリーミッション</div>
+                        <div class="text-gray-300 font-bold">3/5 完了</div>
+                        <div class="text-yellow-400 font-black text-[10px] mt-1">[チャレンジ中]</div>
+                        <div class="flex gap-1 mt-1">
+                            <div class="bg-gray-800 border border-gray-600 w-6 h-6 rounded flex items-center justify-center">⚔️</div>
+                            <div class="bg-purple-900 border border-purple-500 w-6 h-6 rounded flex items-center justify-center">🦋</div>
+                            <div class="bg-blue-900 border border-blue-500 w-6 h-6 rounded flex items-center justify-center">⏱️</div>
+                        </div>
+                    </div>
+
+                    <!-- EVENT -->
+                    <div class="bg-indigo-900/90 border border-indigo-400 rounded-xl p-2 text-white text-xs cursor-pointer hover:bg-indigo-800 transition shadow-lg relative overflow-hidden" onclick="showToast('イベントに参加しますか？')">
+                        <!-- キラキラエフェクトの代わり -->
+                        <div class="absolute -top-4 -right-4 w-12 h-12 bg-yellow-400 rounded-full opacity-30 blur-md"></div>
+                        <div class="font-black text-yellow-300">イベント:</div>
+                        <div class="font-black text-[11px]">ホタルの夜</div>
+                        <div class="text-yellow-400 font-bold mt-1 text-[10px]">✨ 残り2日</div>
+                    </div>
+
+                    <!-- COLLECTION: ふつうの <a> リンク。押すと図鑑のページ（同じ pages/ フォルダの zukan.html）を開く -->
+                    <a href="zukan.html" class="block bg-brand-ui/90 border border-brand-light/50 rounded-xl p-2 text-white text-xs cursor-pointer hover:bg-brand-dark transition shadow-lg">
+                        <div class="font-black">コレクション</div>
+                        <div class="text-gray-300 font-bold">78/150 種類</div>
+                        <div class="w-full bg-black/50 rounded-full h-1.5 mt-1.5 border border-white/10">
+                            <div class="bg-cyan-400 h-full rounded-full" style="width: 52%"></div>
+                        </div>
+                    </a>
+
+                    <!-- FRIENDS -->
+                    <div class="bg-brand-ui/90 border border-brand-light/50 rounded-xl p-2 text-white text-xs flex justify-between items-center cursor-pointer hover:bg-brand-dark transition shadow-lg" onclick="showToast('フレンドリスト')">
+                        <div>
+                            <div class="font-black">フレンド</div>
+                            <div class="text-green-400 font-bold text-[10px]">3人 オンライン</div>
+                        </div>
+                        <span class="text-xl">👥</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- トースト通知用コンテナ -->
+    <div id="toast-container" class="absolute top-20 left-0 w-full flex flex-col items-center pointer-events-none z-[100]"></div>
+
+    <script>
+        // 簡易的なトースト通知システム
+        function showToast(message) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = "bg-gray-900/90 text-white px-4 py-2 rounded-full shadow-lg text-sm font-bold mb-2 transform transition-all duration-300 translate-y-[-20px] opacity-0 border border-gray-600";
+            toast.innerText = message;
+
+            container.appendChild(toast);
+
+            // アニメーションイン
+            requestAnimationFrame(() => {
+                toast.classList.remove('translate-y-[-20px]', 'opacity-0');
+                toast.classList.add('translate-y-0', 'opacity-100');
+            });
+
+            // 数秒後に消去
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-[-20px]', 'opacity-0');
+                setTimeout(() => toast.remove(), 300);
+            }, 2000);
+        }
+
+        // 虫をタップした時のリアクション
+        function pokeBug() {
+            const bug = document.querySelector('.animate-float');
+            // 一時的にアニメーションを止めて拡大
+            bug.style.animation = 'none';
+            bug.style.transform = 'scale(1.2) rotate(5deg)';
+            showToast('ミヤマクワガタが威嚇した！');
+
+            setTimeout(() => {
+                bug.style.transform = '';
+                bug.style.animation = 'float 3s ease-in-out infinite';
+            }, 300);
+        }
+    </script>
+</body>
+</html>

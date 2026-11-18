@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ショップ（作成中）</title>
+    <!--
+        「作成中」画面です。
+        この画面の担当の人は、このファイルの中身をまるごと書きかえてね。
+        （pages/_template.html をコピーして使うと楽だよ）
+    -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            margin: 0;
+            height: 100vh;
+            user-select: none;
+            overflow: hidden;
+        }
+        .font-display {
+            font-family: 'Fredoka One', cursive;
+        }
+        .title-stroke {
+            -webkit-text-stroke: 2px #5d4037;
+            text-shadow: 0px 4px 0px #3e2723, 0px 8px 10px rgba(0,0,0,0.5);
+        }
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        .bokeh {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 70%);
+            mix-blend-mode: overlay;
+        }
+        .glass-panel {
+            background: rgba(17, 34, 17, 0.7);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(167, 243, 208, 0.3);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        /* 工事中の黄色と黒のしましま */
+        .caution-stripe {
+            background: repeating-linear-gradient(-45deg, #ffca28 0 14px, #3e2723 14px 28px);
+        }
+    </style>
+</head>
+<body>
+    <div class="relative h-full flex flex-col">
+        <!-- 背景（ホームと同じ森） -->
+        <div class="absolute inset-0 bg-gradient-to-b from-green-300 via-green-600 to-green-900 z-0">
+            <div class="absolute left-[10%] top-0 w-8 h-full bg-green-900 opacity-40"></div>
+            <div class="absolute right-[20%] top-0 w-12 h-full bg-green-900 opacity-50"></div>
+            <div class="bokeh w-32 h-32 top-10 left-10"></div>
+            <div class="bokeh w-48 h-48 top-40 right-[-20px]"></div>
+        </div>
+
+        <div class="relative z-10 flex-1 flex flex-col items-center justify-center px-6 text-center">
+            <div class="text-[100px] leading-none filter drop-shadow-2xl animate-float">👜</div>
+
+            <h1 class="font-display text-4xl leading-none text-[#ffb300] title-stroke tracking-wide mt-6">
+                COMING<br><span class="text-white">SOON</span>
+            </h1>
+
+            <div class="glass-panel w-full rounded-xl mt-8 text-white overflow-hidden">
+                <div class="caution-stripe h-2"></div>
+                <div class="p-4">
+                    <div class="font-black text-lg">ショップは作成中です</div>
+                    <div class="text-gray-300 font-bold text-xs mt-2 leading-relaxed">
+                        もうすぐできるよ！<br>
+                        作る人は <code class="bg-black/40 text-yellow-300 px-1 rounded">pages/shop.html</code> を書きかえてね。
+                    </div>
+                </div>
+                <div class="caution-stripe h-2"></div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!--
+        新しい画面を作るときのひな形です。
+        1. このファイルの中身をまるごとコピーして、担当のファイル（例: pages/battle.html）に上書きする
+        2. 下の <body> の中を自由に書きかえる
+        3. index.html を開いて、担当のタブを押すと自分の画面が出ればOK！
+
+        他の画面に移動したいときは、ふつうの <a> タグで書けます。
+        例: <a href="zukan.html">図鑑へ</a>   （同じ pages/ フォルダの中なので、ファイル名だけでOK）
+
+        ホームと同じ見た目にしたいときは pages/home.html を参考にしてね。
+        Tailwind CSS（class="text-white" のような書き方）と、ホームと同じフォントが使えるようになっています。
+    -->
+    <title>新しい画面</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            margin: 0;
+            height: 100vh;
+        }
+        .font-display {
+            font-family: 'Fredoka One', cursive;
+        }
+    </style>
+</head>
+<body>
+    <!-- 上の 40px くらいはステータスバー（時計など）と重なるので、pt-10 で空けています -->
+    <div class="h-full bg-gradient-to-b from-green-300 via-green-600 to-green-900 pt-10 px-4 text-white">
+        <h1 class="font-display text-3xl">新しい画面</h1>
+        <p class="mt-2 font-bold">ここに画面の中身を書いてね。</p>
+    </div>
+
+    <script>
+        // JavaScript はここに書きます
+    </script>
+</body>
+</html>
