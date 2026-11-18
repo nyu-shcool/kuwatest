@@ -69,46 +69,18 @@ pages/
 
 ## 提出の仕方
 
-### やり方A: Pull Request（PR）で出す
-
-1. このリポジトリを clone して、フォルダの中に入ります。
-
-   ```bash
-   git clone https://github.com/nyu-shcool/kuwatest.git
-   ```
-
-   ```bash
-   cd kuwatest
-   ```
-
-2. 自分用のブランチを作ります。
-
-   ```bash
-   git switch -c add-battle-page
-   ```
-
-3. `pages/battle.html` を書きかえて、動くことを確認します。
-4. コミットして push します。
-
-   ```bash
-   git add pages/battle.html
-   ```
-
-   ```bash
-   git commit -m "バトル画面を追加"
-   ```
-
-   ```bash
-   git push -u origin add-battle-page
-   ```
-
-5. GitHub で Pull Request を作ります。
-6. レビューで OK が出たらマージされます。
-
-1人1ファイルなので、他の人の PR とぶつかる（コンフリクトする）ことはほとんどありません。
-
-### やり方B: 自分のリポジトリで作って、最後に合体する
+### やり方A: 自分のリポジトリで作って、最後に合体する
 
 1. 自分のリポジトリに `pages/_template.html` をコピーして、`battle.html` として作ります。
 2. 1ファイルだけで動くように作ります（画像などを使う場合は相談してください）。
 3. 完成したら、このリポジトリの `pages/battle.html` を、そのファイルで置きかえます（PR でも、ファイルを渡すのでもOK）。
+
+### やり方B: Pull Request（PR）で出す
+
+1. 自分用のブランチを作ります。
+2. `pages/battle.html` を書きかえて、動くことを確認します。
+3. コミットして push します。
+4. GitHub で Pull Request を作ります。
+5. レビューで OK が出たらマージされます。
+
+1人1ファイルなので、他の人の PR とぶつかる（コンフリクトする）ことはほとんどありません。
